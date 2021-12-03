@@ -8,5 +8,5 @@ Using a configuration file to set up listeners allows turning them on and off
 with having to redeploy the application, simply by modifying the config file.
 
 See [Trace Switches](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/trace-switches)
-and [How to: Create, Initialize and Configure Trace Switches](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches)
+and [How to: Create, Initialize and Configure Trace Switches](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
 
