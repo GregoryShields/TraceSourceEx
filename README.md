@@ -4,6 +4,7 @@
 [How to: Create and Initialize Trace Sources](https://msdn.microsoft.com/en-us/library/ms228984(v=vs.110).aspx)
 
 See App.config for listener declarations.
+
 Using a configuration file to set up listeners allows turning them on and off
 with having to redeploy the application, simply by modifying the config file.
 
