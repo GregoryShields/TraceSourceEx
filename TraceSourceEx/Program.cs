@@ -8,24 +8,28 @@ namespace TraceSourceEx
 
 		static Program() // Private static constructor.
 		{
-			// Create a TraceSource object named __mySource from the trace source named "TraceSourceEx"
-			// which is defined in App.config.
+			// Create a TraceSource object named __mySource from the trace source which is defined in
+			// App.config.
 
-			// Looking at App.config, we see that TraceSourceEx has two trace listeners declared and the
-			// default trace listener has been removed. A trace source can only have one trace switch, and
-			// we see that TraceSourceEx has exactly one trace switch declared.
+			// Looking at App.config, we see that our TraceSource object has name "traceSourceEx",
+			// switchName "sourceSwitch", and switchType SourceSwitch.
+
+			// We also see that traceSourceEx has two trace listeners declared and the default trace
+			// listener has been removed. A trace source can only have one trace switch, and we see
+			// that traceSourceEx has exactly one trace switch declared with name "sourceSwitch".
 
 			// Trace Listeners
 			// The first listener is named "console" and is declared to be of type ConsoleTraceListener.
 			// It has exactly one filter of type EventTypeFilter which has a value of "Warning".
 
+			// The second listener...
+
 			// Trace Switch
 			// There are 3 types of trace switches in .NET: BooleanSwitch, TraceSwitch, and SourceSwitch.
-			// The trace switch defined in TraceSourceEx is of type SourceSwitch. I verified this in the
-			// debugger's watch window. It makes sense that a TraceSource object would have a trace switch
-			// of type SourceSwitch.
+			// I verified that the trace switch defined in traceSourceEx is of type SourceSwitch in the
+			// debugger's watch window.
 
-			__mySource = new TraceSource("TraceSourceEx");
+			__mySource = new TraceSource("traceSourceEx");
 		}
 
 		static void Main()
