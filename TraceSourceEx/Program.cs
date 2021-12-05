@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
-// https://5fc061059c4637b3fbfe9fecbb10d5611587b75c@github.com/GregoryShields/TraceSourceEx.git
-// git clone ssh://root@192.168.1.70/DataVolume/shares/Jimmy/Git/gVim.git
+
 namespace TraceSourceEx
 {
 	class Program
