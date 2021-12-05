@@ -41,6 +41,6 @@ The second listener...
 
 ### Trace Switch
 
-Although there are 3 types of trace switches in .NET (BooleanSwitch, TraceSwitch, and SourceSwitch), the Switch property of TraceSource is always of type SourceSwitch. I verified this in the debugger's watch window.
+Although there are 3 types of trace switches in .NET (BooleanSwitch, TraceSwitch, and SourceSwitch), according to the Microsoft documentation, the Switch property of TraceSource is always of type SourceSwitch. I wonder then, why do we need to specify the switchType property in App.config?
 
 
