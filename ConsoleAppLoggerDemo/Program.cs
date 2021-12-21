@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace ConsoleAppLoggerDemo;
+namespace core_console_logging;
 
 class Program
 {
