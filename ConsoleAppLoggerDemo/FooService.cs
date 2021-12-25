@@ -1,22 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace core_console_logging;
-
-public interface IFooService
-{
-	void DoWork();
-}
+namespace ConsoleAppLoggerDemo;
 
 public class FooService : IFooService
 {
-	readonly ILogger _logger;
+	readonly ILogger<FooService> _logger;
 
-	public FooService(ILogger logger)
+	public FooService(ILogger<FooService> logger)
 	{
 		_logger = logger;
 	}
 
-	public void DoWork()
+	public void FooServiceLoggingExample()
 	{
 		_logger.LogInformation(
 			3,

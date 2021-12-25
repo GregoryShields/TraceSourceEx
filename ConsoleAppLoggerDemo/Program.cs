@@ -1,15 +1,31 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿// Install these two NuGet packages...
+// Microsoft.Extensions.Configuration.Json
+// Microsoft.Extensions.Logging.Console
+// ...and then reference them in these two usings...
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace core_console_logging;
+namespace ConsoleAppLoggerDemo;
 
 class Program
 {
 	static void Main()
 	{
-		var (logger, fooLogger) = GetLoggers();
+		var loggerFactory = CreateLoggerFactory();
 
-		// Settings in appsettings.json filter this out.
+		// First logging example.
+		var logger = loggerFactory.CreateLogger<Program>();
+		ProgramClassLoggingExample(logger);
+
+		// Second logging example.
+		var fooLogger = loggerFactory.CreateLogger<FooService>();
+		IFooService fooService = new FooService(fooLogger);
+		fooService.FooServiceLoggingExample();
+	}
+
+	static void ProgramClassLoggingExample(ILogger<Program> logger)
+	{
+		// This is filtered out by settings in appsettings.json.
 		logger.LogInformation(
 			1,
 			"Logger information.");
@@ -17,12 +33,9 @@ class Program
 		logger.LogWarning(
 			2,
 			"Logger warning.");
-
-		IFooService fooService = new FooService(fooLogger);
-		fooService.DoWork();
 	}
 
-	static Tuple<ILogger, ILogger> GetLoggers()
+	static ILoggerFactory CreateLoggerFactory()
 	{
 		// .NET Core requires that we explicitly load configuration files.
 		var configuration = new ConfigurationBuilder()
@@ -32,9 +45,11 @@ class Program
 				true)
 			.Build();
 
-		// See the 3.0 example which confirms our code:
+		// In Microsoft.Extensions.Logging 3.0 or greater you use the Create method, which is different than
+		// the way it was done in 2.1 or 2.2.
 		// https://docs.microsoft.com/en-us/aspnet/core/migration/logging-nonaspnetcore?view=aspnetcore-6.0
-		using var loggerFactory = LoggerFactory.Create(
+		// We've installed version 6.0 in this app.
+		var loggerFactory = LoggerFactory.Create(
 			builder =>
 			{
 				builder.AddConfiguration(
@@ -43,11 +58,6 @@ class Program
 				builder.AddConsole();
 			}
 		);
-
-		// Create two different loggers and return them.
-		var logger    = loggerFactory.CreateLogger<Program>();
-		var fooLogger = loggerFactory.CreateLogger<FooService>();
-
-		return new Tuple<ILogger, ILogger>(logger, fooLogger);
+		return loggerFactory;
 	}
 }

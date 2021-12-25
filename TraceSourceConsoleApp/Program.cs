@@ -10,29 +10,23 @@ namespace TraceSourceConsoleApp
 {
 	class Program
 	{
-		static readonly TraceSource __traceSource;
-
-		static Program()
-		{
-			__traceSource = new TraceSource("LogSource");
-		}
-
 		static void Main()
 		{
-			// TraceEvent
-			__traceSource.TraceEvent(
+			var mySource = new TraceSource("LogSource");
+
+			mySource.TraceEvent(
 				TraceEventType.Verbose,
 				1,
 				"Now we're logging!");
 
-			// TraceData - allows passing an object, not just a string.
-			__traceSource.TraceData(
+			// Allows passing an object, not just a string.
+			mySource.TraceData(
 				TraceEventType.Verbose,
 				1,
 				"Now we're logging!");
 
 			//__traceSource.Flush(); // Unnecessary
-			__traceSource.Close();
+			mySource.Close();
 		}
 	}
 }
