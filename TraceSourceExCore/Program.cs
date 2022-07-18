@@ -6,9 +6,9 @@ class Program
 {
 	static void Main()
 	{
-		Trace.Listeners
-			Debug.li
-		var mySource = new TraceSource("traceSourceEx");;
+		//Trace.Listeners
+		//	Debug.li
+		var mySource = new TraceSource("traceSourceEx");
 
 		Activity1(mySource);
 
